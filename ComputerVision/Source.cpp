@@ -6,8 +6,6 @@ using namespace cv;
 
 int main()
 {
-	String windowName = "Panorama";
-
 	// Source video
 	string filename = "source.mp4";
 	VideoCapture capture(filename);
@@ -15,36 +13,28 @@ int main()
 	if (!capture.isOpened())
 		cout << "Error when reading the video file..";
 
-
+	String windowName = "Panorama";
 	vector<Mat> framesArr;
-	Mat frame;
+	Mat tempFrame;
 	Mat panorama;
-
-	//int fps = capture.get(CV_CAP_PROP_FPS);
-	//int imageDuration = 1000 / fps;
 
 	int numOfFrames = capture.get(CV_CAP_PROP_FRAME_COUNT);
 
+	// Get frames from source video.
 	for (int i = 0; ; i++)
 	{
-		capture >> frame;
+		capture >> tempFrame;
 
-		if (frame.empty())
+		if (tempFrame.empty())
 			break;
 
-		if (i > 0 && i % (numOfFrames / 6) == 0)
-		{
-			framesArr.push_back(frame.clone());
-			//imwrite(to_string(i / 50) + ".jpg", frame.clone());
-		}
+		if (i % (numOfFrames / 8) == 0)
+			framesArr.push_back(tempFrame.clone());
 
-		//imshow(windowName, frame);
-		//waitKey(imageDuration); // waits to display frame
+		//imwrite(to_string(i / 50) + ".jpg", frame.clone());
 	}
 
-	cout << "Num of frames = " << framesArr.size() << endl;
-
-	
+	// Stitching all frames into one panorama.
 	Ptr<Stitcher> stitcher = Stitcher::create(Stitcher::PANORAMA, true);
 	Stitcher::Status status = stitcher->stitch(framesArr, panorama);
 
@@ -58,9 +48,6 @@ int main()
 	imshow(windowName, panorama);
 	imwrite("pano.jpg", panorama.clone());
 	waitKey(0);
-
-
-
 
 	return 0;
 } // End main
