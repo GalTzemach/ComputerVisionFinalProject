@@ -10,7 +10,7 @@
 //	startTime = clock();
 //
 //	// Source video
-//	string filename = "input/source.mp4";
+//	string filename = "input/source2.mp4";
 //	VideoCapture capture(filename);
 //
 //	if (!capture.isOpened())
@@ -23,8 +23,8 @@
 //	vector<Mat> framesArr;
 //	Mat tempFrame;
 //	Mat panorama;
-//	//const int NUM_OF_FRAMES = 150;
-//	const int STRIP_WIDTH = 190; /// change to percent
+//	const int NUM_OF_FRAMES = 20;
+//	const int STRIP_WIDTH = 700; /// change to percent
 //
 //	int frameCount = capture.get(CV_CAP_PROP_FRAME_COUNT);
 //	int width = capture.get(CV_CAP_PROP_FRAME_WIDTH);
@@ -37,8 +37,8 @@
 //		if (tempFrame.empty())
 //			break;
 //
-//		//if (i % (frameCount / NUM_OF_FRAMES) == 0)
-//			framesArr.push_back(tempFrame.clone());
+//		if (i % (frameCount / NUM_OF_FRAMES) == 0)
+//		framesArr.push_back(tempFrame.clone());
 //
 //		//imwrite(to_string(i / 50) + ".jpg", frame.clone());
 //	}

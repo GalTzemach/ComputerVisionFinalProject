@@ -1,5 +1,6 @@
 //#include <opencv2/opencv.hpp>
 //#include <iostream>
+//#include <algorithm>
 //
 //using namespace std;
 //using namespace cv;
@@ -23,8 +24,8 @@
 //	vector<Mat> framesArr;
 //	Mat tempFrame;
 //	Mat panorama;
-//	//const int NUM_OF_FRAMES = 150;
-//	const int STRIP_WIDTH = 190; /// change to percent
+//	//const int NUM_OF_FRAMES = 20;
+//	const int STRIP_WIDTH = 10; /// change to percent
 //
 //	int frameCount = capture.get(CV_CAP_PROP_FRAME_COUNT);
 //	int width = capture.get(CV_CAP_PROP_FRAME_WIDTH);
@@ -34,13 +35,11 @@
 //	for (int i = 0; ; i++)
 //	{
 //		capture >> tempFrame;
+//
 //		if (tempFrame.empty())
 //			break;
 //
-//		//if (i % (frameCount / NUM_OF_FRAMES) == 0)
-//			framesArr.push_back(tempFrame.clone());
-//
-//		//imwrite(to_string(i / 50) + ".jpg", frame.clone());
+//		framesArr.push_back(tempFrame.clone());
 //	}
 //
 //	// Select strip from each frame.
@@ -52,23 +51,27 @@
 //		framesArr[i] = tempFrame;
 //	}
 //
-//	cout << "Before stitching..." << endl;
+//	reverse(framesArr.begin(), framesArr.end());
+//	hconcat(framesArr, panorama);
 //
-//	// Stitching all frames into one panorama.
-//	Ptr<Stitcher> stitcher = Stitcher::create(Stitcher::PANORAMA, true);
-//	Stitcher::Status status = stitcher->stitch(framesArr, panorama);
+//	//cout << "Before stitching..." << endl;
 //
-//	cout << "After stitching!" << endl;
+//	//// Stitching all frames into one panorama.
+//	//Ptr<Stitcher> stitcher = Stitcher::create(Stitcher::PANORAMA, true);
+//	//Stitcher::Status status = stitcher->stitch(framesArr, panorama);
 //
-//	if (status != Stitcher::OK)
-//	{
-//		cout << "Can't stitch images, error code = " << int(status) << endl;
-//		//return -1;
-//		system("pause");
-//	}
+//	//cout << "After stitching!" << endl;
+//
+//	//if (status != Stitcher::OK)
+//	//{
+//	//	cout << "Can't stitch images, error code = " << int(status) << endl;
+//	//	//return -1;
+//	//	system("pause");
+//	//}
 //
 //	//destroyAllWindows();
 //	//namedWindow(windowName, WINDOW_KEEPRATIO);
+//	
 //	imshow(windowName, panorama);
 //	imwrite("pano.jpg", panorama.clone());
 //
