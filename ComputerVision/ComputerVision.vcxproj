@@ -122,10 +122,8 @@
   <ItemGroup>
     <ClCompile Include="concatAllFrames.cpp" />
     <ClCompile Include="leftRightPanorama.cpp" />
-    <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Source1.cpp" />
     <ClCompile Include="stitchFramesOneByOne.cpp" />
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="linor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

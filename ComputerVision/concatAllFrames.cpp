@@ -71,7 +71,7 @@
 //
 //	//destroyAllWindows();
 //	//namedWindow(windowName, WINDOW_KEEPRATIO);
-//	
+//
 //	imshow(windowName, panorama);
 //	imwrite("pano.jpg", panorama.clone());
 //
