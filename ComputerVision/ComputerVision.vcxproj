@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="concatAllFrames.cpp" />
     <ClCompile Include="leftRightPanorama.cpp" />
+    <ClCompile Include="linor2.cpp" />
     <ClCompile Include="stitchFramesOneByOne.cpp" />
     <ClCompile Include="linor.cpp" />
   </ItemGroup>
