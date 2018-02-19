@@ -24,10 +24,10 @@
     <ClCompile Include="leftRightPanorama.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="linor.cpp">
+    <ClCompile Include="linor2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="linor2.cpp">
+    <ClCompile Include="linorSource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
