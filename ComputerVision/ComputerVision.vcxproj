@@ -123,7 +123,8 @@
     <ClCompile Include="concatAllFrames.cpp" />
     <ClCompile Include="leftRightPanorama.cpp" />
     <ClCompile Include="linor2.cpp" />
-    <ClCompile Include="Ran.cpp" />
+    <ClCompile Include="ran.cpp" />
+    <ClCompile Include="ran2.cpp" />
     <ClCompile Include="Test2.cpp" />
     <ClCompile Include="stitchFrameByFrame.cpp" />
     <ClCompile Include="linorSource.cpp" />

@@ -33,7 +33,10 @@
     <ClCompile Include="Test2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ran.cpp">
+    <ClCompile Include="ran2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ran.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
