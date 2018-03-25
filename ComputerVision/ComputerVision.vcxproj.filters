@@ -18,9 +18,6 @@
     <ClCompile Include="concatAllFrames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stitchFramesOneByOne.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="leftRightPanorama.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -28,6 +25,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="linorSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stitchFrameByFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Test2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ran.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

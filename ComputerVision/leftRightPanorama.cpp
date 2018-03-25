@@ -66,7 +66,7 @@
 //
 //	// Stitching all frames into one panorama.
 //	Ptr<Stitcher> stitcher = Stitcher::create(Stitcher::PANORAMA, true);
-//	
+//
 //	Stitcher::Status status = stitcher->stitch(centerArr, pano);
 //	if (status != Stitcher::OK)
 //	{
