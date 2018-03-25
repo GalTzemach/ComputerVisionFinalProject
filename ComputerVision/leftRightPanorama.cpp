@@ -81,6 +81,8 @@ int main()
 	}
 
 	cout << "Number of frame = " << framesArr.size() << endl;
+	cout << "Strip size = " << STRIP_WIDTH << endl;
+
 	cout << "Before stitching..." << endl;
 
 	// Stitching all frames into one panorama.
