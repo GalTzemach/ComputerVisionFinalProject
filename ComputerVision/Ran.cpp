@@ -27,14 +27,14 @@
 //
 //	// our aim is construct panaromic images rahter than just merging consecutive images
 //	Stitcher::Mode mode = Stitcher::PANORAMA;
-//	
+//
 //	// image arrays to prenet stereo vsion as left and right eye signth
 //	vector<Mat> rMat;
 //	vector<Mat> lMat;
 //
 //	// To read video we create a video reader object with given video file name
 //	VideoCapture vid = VideoCapture("input/mountain.mov");
-//	
+//
 //	// check if the file is existing
 //	if (!vid.isOpened())
 //	{

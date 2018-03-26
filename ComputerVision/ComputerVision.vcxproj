@@ -121,13 +121,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="concatAllFrames.cpp" />
-    <ClCompile Include="leftRightPanorama.cpp" />
-    <ClCompile Include="linor2.cpp" />
+    <ClCompile Include="daniel.cpp" />
+    <ClCompile Include="setStripsFromMiddle.cpp" />
+    <ClCompile Include="setStripsFromSides.cpp" />
     <ClCompile Include="ran.cpp" />
-    <ClCompile Include="ran2.cpp" />
-    <ClCompile Include="Test2.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="stitchFrameByFrame.cpp" />
-    <ClCompile Include="linorSource.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
