@@ -121,14 +121,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="concatAllFrames.cpp" />
-    <ClCompile Include="daniel.cpp" />
-    <ClCompile Include="daniel2.cpp" />
     <ClCompile Include="setStripsFromMiddle.cpp" />
     <ClCompile Include="setStripsFromSides.cpp" />
-    <ClCompile Include="ran.cpp" />
     <ClCompile Include="setStripsFromSides2.cpp" />
-    <ClCompile Include="test.cpp" />
-    <ClCompile Include="stitchFrameByFrame.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -18,25 +18,10 @@
     <ClCompile Include="concatAllFrames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stitchFrameByFrame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ran.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="daniel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="setStripsFromSides.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="setStripsFromMiddle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="daniel2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="setStripsFromSides2.cpp">

@@ -8,7 +8,7 @@ using namespace cv;
 int main()
 {
 	// My var.
-	const double STRIP_WIDTH = 0.98;
+	const double STRIP_WIDTH = 0.99;
 	const int frameSamplingRate = 8;
 
 	const int startFrame = 115;
