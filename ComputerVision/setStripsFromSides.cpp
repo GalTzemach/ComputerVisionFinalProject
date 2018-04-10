@@ -1,6 +1,7 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
+
 using namespace std;
 using namespace cv;
 
@@ -9,10 +10,10 @@ int main()
 {
 	// My var.
 	const double STRIP_WIDTH = 0.99;
-	const int frameSamplingRate = 8;
+	const int FRAME_SAMPLING_RATE = 8;
 
-	const int startFrame = 115;
-	const int endFrame = 329;
+	const int START_FRAME = 115;
+	const int END_FRAME = 329;
 
 	// To measure the time elapsed.
 	clock_t startTime, endTime;
@@ -54,7 +55,7 @@ int main()
 	{
 		video >> tempFrame;
 
-		if (i >= startFrame && i <= endFrame && i % frameSamplingRate == 0)
+		if (i >= START_FRAME && i <= END_FRAME && i % FRAME_SAMPLING_RATE == 0)
 		{
 			rotate(tempFrame, tempFrame, 0);
 
@@ -99,4 +100,5 @@ int main()
 
 	system("pause");
 	return 0;
+
 } // End main.
