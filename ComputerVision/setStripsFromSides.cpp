@@ -98,6 +98,12 @@ int main()
 	endTime = clock();
 	cout << "Total time = " << (double)(endTime - startTime) / CLOCKS_PER_SEC << " Sec" << endl;
 
+
+	// add concat by code.
+	// add results with 30%.
+	// add red cyan bt code.
+	// add red cyan of gal.
+
 	system("pause");
 	return 0;
 
