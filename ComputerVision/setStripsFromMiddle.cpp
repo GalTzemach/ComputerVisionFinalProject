@@ -4,124 +4,148 @@
 //using namespace std;
 //using namespace cv;
 //
+//void stereoPanorama(Mat leftPano, Mat rightPano);
+//
 //int main()
 //{
+//	// My var.
+//	const double STRIP_WIDTH = 0.35;
+//	const int FRAME_SAMPLING_RATE = 3;
+//
+//	const int START_FRAME = 115;
+//	const int END_FRAME = 329;
+//
 //	// To measure the time elapsed.
 //	clock_t startTime, endTime;
 //	startTime = clock();
 //
 //	// Source video
 //	string filename = "input/mountain.mov";
-//	VideoCapture capture(filename);
+//	VideoCapture video(filename);
 //
 //	// Check if exist.
-//	if (!capture.isOpened())
+//	if (!video.isOpened())
 //	{
 //		cout << "Error when reading the video file..";
-//		return 1;
+//		return -1;
 //	}
 //
-//	//const int NUM_OF_FRAMES = 150;
-//	const double STRIP_WIDTH = 0.49; /// In percent.
-//	const int startFrame = 115;
-//	const int endFrame = 329;
-//
-//	// Stitching parameters.
+//	// Stitcher parameters.
 //	bool try_use_gpu = true;
 //	Stitcher::Mode mode = Stitcher::PANORAMA;
 //
-//	vector<Mat> framesArr, centerArr, leftArr, rightArr;
+//	// For hold the relevant frame/s.
+//	vector<Mat> leftArr, rightArr;
 //	Mat tempFrame;
-//	Mat pano;
 //	Mat leftPano;
 //	Mat rightPano;
+//	Mat leftRrightPano;
 //
 //	// Get info from source video.
-//	int frameCount = capture.get(CV_CAP_PROP_FRAME_COUNT);
-//	// Opposite - Because video is tilted 90 degrees.
-//	int height = capture.get(CV_CAP_PROP_FRAME_WIDTH);
-//	int width = capture.get(CV_CAP_PROP_FRAME_HEIGHT);
+//	int frameCount = video.get(CV_CAP_PROP_FRAME_COUNT);
 //
-//	// Get selected frames from source video.
-//	for (int i = 0; ; i++)
+//	// Height and width are Opposite - Because the video is tilted 90 degrees.
+//	int height = video.get(CV_CAP_PROP_FRAME_WIDTH);
+//	int width = video.get(CV_CAP_PROP_FRAME_HEIGHT);
+//
+//	// Create strips size.
+//	Rect rectLeft(Point(width / 4 - (STRIP_WIDTH * width / 2), 0), Point(width / 4 + (STRIP_WIDTH * width / 2), height));
+//	Rect rectRight(Point(width / 4 * 3 - (STRIP_WIDTH * width / 2), 0), Point(width / 4 * 3 + (STRIP_WIDTH * width / 2), height));
+//
+//	// Fill selected strips into arrays.
+//	for (int i = 0; i < frameCount; i++)
 //	{
-//		capture >> tempFrame;
+//		video >> tempFrame;
 //
-//		// Check if this last frame in video.
-//		if (tempFrame.empty())
-//			break;
-//
-//		// Choose frame in specific interval from video (360 degrees total).
-//		if (i >= startFrame && i <= endFrame && i % 6 == 0) {
-//			// Choose specific number of frame.
-//			//if (i % ((toFrame - fromFrame) / NUM_OF_FRAMES) == 0)
-//			//{
+//		if (i >= START_FRAME && i <= END_FRAME && i % FRAME_SAMPLING_RATE == 0)
+//		{
 //			rotate(tempFrame, tempFrame, 0);
-//			framesArr.push_back(tempFrame.clone());
-//			//}
+//
+//			leftArr.push_back(tempFrame.clone()(rectLeft));
+//
+//			rightArr.push_back(tempFrame.clone()(rectRight));
 //		}
 //	}
 //
-//	// Create strips size.
-//	Rect centerStripSize(Point((int)width / 2 - (STRIP_WIDTH * width / 2), 0), Point((int)width / 2 + (STRIP_WIDTH * width / 2), height));
-//	Rect leftStripSize(Point(width / 4 - (STRIP_WIDTH * width / 2), 0), Point(width / 4 + (STRIP_WIDTH * width / 2), height));
-//	Rect rightStripSize(Point(width / 4 * 3 - (STRIP_WIDTH * width / 2), 0), Point(width / 4 * 3 + (STRIP_WIDTH * width / 2), height));
-//
-//	// Fill selected strips into arrays.
-//	for (int i = 0; i < framesArr.size(); i++)
-//	{
-//		centerArr.push_back(framesArr[i].clone()(centerStripSize));
-//
-//		leftArr.push_back(framesArr[i].clone()(leftStripSize));
-//
-//		rightArr.push_back(framesArr[i].clone()(rightStripSize));
-//	}
-//
-//	cout << "Number of frame = " << framesArr.size() << endl;
+//	cout << "Number of frame = " << leftArr.size() << endl;
 //	cout << "Strip size = " << STRIP_WIDTH << endl;
-//
-//	cout << "Stitching..." << endl;
 //
 //	// Stitching all frames into one panorama.
 //	Ptr<Stitcher> stitcher = Stitcher::create(mode, try_use_gpu);
 //	Stitcher::Status status;
 //
-//	//status = stitcher->stitch(centerArr, pano);
-//	//if (status != Stitcher::OK)
-//	//{
-//	//	cout << "Can't stitch images, error code = " << int(status) << endl;
-//	//	//return -1;
-//	//	system("pause");
-//	//}
-//
+//	cout << "Stitching left panorama..." << endl;
 //	status = stitcher->stitch(leftArr, leftPano);
 //	if (status != Stitcher::OK)
 //	{
-//		cout << "Can't stitch images, error code = " << int(status) << endl;
-//		//return -1;
+//		cout << "Can't stitch frames in leftArr, error code = " << int(status) << endl;
 //		system("pause");
+//		return -1;
 //	}
 //
+//	cout << "Stitching right panorama..." << endl;
 //	status = stitcher->stitch(rightArr, rightPano);
 //	if (status != Stitcher::OK)
 //	{
-//		cout << "Can't stitch images, error code = " << int(status) << endl;
-//		//return -1;
+//		cout << "Can't stitch frames in rightArr, error code = " << int(status) << endl;
 //		system("pause");
+//		return -1;
 //	}
 //
-//	cout << "After stitching!" << endl;
+//	// Makes the panorama images same size if needed.
+//	if (leftPano.size < rightPano.size)
+//		resize(rightPano, rightPano, leftPano.size());
+//	else if (rightPano.size < leftPano.size)
+//		resize(leftPano, leftPano, rightPano.size());
 //
-//	// Save results as images.
-//	//imwrite("output/pano.jpg", pano.clone());
-//	imwrite("output/Leftpano.jpg", leftPano.clone());
-//	imwrite("output/Rightpano.jpg", rightPano.clone());
+//	// vertical concatenation.
+//	vconcat(leftPano, rightPano, leftRrightPano);
 //
+//	// Save results to computer.
+//	imwrite("output/leftPano.jpg", leftPano);
+//	imwrite("output/rightPano.jpg", rightPano);
+//	imwrite("output/leftRrightPano.jpg", leftRrightPano);
+//
+//	stereoPanorama(leftPano, rightPano);
+//
+//	// Print time elapsed.
 //	endTime = clock();
 //	cout << "Total time = " << (double)(endTime - startTime) / CLOCKS_PER_SEC << " Sec" << endl;
 //
-//	waitKey(0);
-//
 //	system("pause");
 //	return 0;
-//} // End main
+//
+//} // End main.
+//
+//
+//  // Code that converts two images into one stereoPanorama.
+//void stereoPanorama(Mat leftPano, Mat rightPano)
+//{
+//	Mat leftPanoChanels[3];
+//	Mat rightPanoChanels[3];
+//
+//	Mat leftPanoCyan;
+//	Mat rightPanoRed;
+//
+//	Mat stereoPanorama;
+//
+//	// Split chanels.
+//	split(leftPano, leftPanoChanels);
+//	split(rightPano, rightPanoChanels);
+//
+//	// Set the right pano to red color.
+//	rightPanoChanels[0] = Mat::zeros(rightPano.rows, rightPano.cols, CV_8UC1);//Set blue channel to 0
+//	rightPanoChanels[1] = Mat::zeros(rightPano.rows, rightPano.cols, CV_8UC1);//Set green channel to 0
+//	merge(rightPanoChanels, 3, rightPanoRed);
+//
+//	// Set the left pano to cyan color.
+//	leftPanoChanels[2] = Mat::zeros(leftPano.rows, leftPano.cols, CV_8UC1);//Set red channel to 0
+//	merge(leftPanoChanels, 3, leftPanoCyan);
+//
+//	// Add two images leftPanoCyan & rightPanoRed to one stereoPanorama
+//	add(leftPanoCyan, rightPanoRed, stereoPanorama);
+//
+//	//Write the stereoPanorama 
+//	imwrite("output/stereoPanorama.jpeg", stereoPanorama);
+//
+//} // End stereoPanorama

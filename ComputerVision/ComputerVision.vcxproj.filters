@@ -24,13 +24,7 @@
     <ClCompile Include="setStripsFromMiddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="setStripsFromSides2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="middle2.cpp">
+    <ClCompile Include="setStripsFromSides2Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
